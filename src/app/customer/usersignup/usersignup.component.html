@@ -1,0 +1,52 @@
+<div class="container custom-container shadow p-3 mb-5 bg-white rounded">
+    <h2>Sign Up</h2>
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <div class="form-group">
+        <label for="usermailid">Email:</label>
+        <input class="form-control"  type="text" name="usermailid" [(ngModel)]="model.usermailid" #usermailid="ngModel" required minlength="12">
+        <div *ngIf="signupForm.controls['usermailid']?.invalid && (signupForm.controls['usermailid']?.dirty || signupForm.controls['usermailid']?.touched)" class="text-danger">
+          <div *ngIf="signupForm?.controls?.['usermailid']?.errors?.['required']" >Email is required.</div>
+          <div *ngIf="usermailid.errors?.['usermailid']">Invalid usermailid format.</div>
+        </div>
+      </div>
+      <!-- Add more form fields here (e.g., name, sellerpassword) -->
+      <div class="form-group">
+        <label for="userpassword">Password:</label>
+        <input type="userpassword" class="form-control" id="userpassword" name="userpassword" [(ngModel)]="model.userpassword" #userpassword="ngModel" required minlength="8" >
+        <div *ngIf="signupForm?.controls?.['userpassword']?.invalid && (signupForm?.controls?.['userpassword']?.dirty || signupForm?.controls?.['userpassword']?.touched)" class="text-danger">
+          <div *ngIf="signupForm?.controls?.['userpassword']?.errors?.['required']">Password is required.</div>
+          <div *ngIf="signupForm?.controls?.['userpassword']?.errors?.['minlength']">Password must be at least 8 characters.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="username">Name</label>
+        <input type="username" class="form-control" id="username" name="username" [(ngModel)]="model.username" #username="ngModel" required minlength="3" >
+        <div *ngIf="signupForm?.controls?.['username']?.invalid && (signupForm?.controls?.['username']?.dirty || signupForm?.controls?.['username']?.touched)" class="text-danger">
+          <div *ngIf="signupForm?.controls?.['username']?.errors?.['required']">Name is required.</div>
+          <div *ngIf="signupForm?.controls?.['username']?.errors?.['minlength']">Name must be at least 3 characters.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="phonenumber">Phone Number</label>
+        <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber" [(ngModel)]="model.phonenumber" required minlength="10" #phonenumber="ngModel">
+        <div *ngIf="signupForm?.controls?.['phonenumber']?.invalid && (signupForm?.controls?.['phonenumber']?.dirty || signupForm?.controls?.['phonenumber']?.touched)" class="text-danger">
+          <div *ngIf="signupForm?.controls?.['phonenumber']?.errors?.['required']">Phone Number is required.</div>
+          <div *ngIf="signupForm?.controls?.['phonenumber']?.errors?.['minlength']">Phone Number must be at least 10 digits.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="useraddress">Address</label>
+        <input type="useraddress" class="form-control" id="useraddress" name="useraddress" [(ngModel)]="model.useraddress" required minlength="8" #useraddress="ngModel">
+        <div *ngIf="signupForm?.controls?.['useraddress']?.invalid && (signupForm?.controls?.['useraddress']?.dirty || signupForm?.controls?.['useraddress']?.touched)" class="text-danger">
+          <div *ngIf="signupForm?.controls?.['useraddress']?.errors?.['required']">Address is required.</div>
+          <div *ngIf="signupForm?.controls?.['useraddress']?.errors?.['minlength']">Address must be at least 8 characters.</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="signupForm.invalid">Sign Up</button>
+      <p>Already a member? <a routerLink="/user/login/">Login now</a></p>
+    </form>
+  </div>
+  

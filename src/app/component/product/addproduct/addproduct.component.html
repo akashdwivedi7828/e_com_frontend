@@ -1,0 +1,50 @@
+<div class="container custom-container shadow p-3 mb-5 bg-white rounded">
+  <div class="d-flex justify-content-start"> <!-- Align content to the right -->
+    <button class="btn btn-primary" (click)="redirectToProductListing()">
+      <i class="fas fa-arrow-left"></i> Back to Products List
+    </button>
+</div>
+<br>
+  <h2>Add Product</h2>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm" >
+    <div class="form-group">
+      <label for="productname">Product Name</label>
+      <input type="text" id="productname" class="form-control" [(ngModel)]="product.productname" name="productname" required #productname="ngModel">
+      <div class="text-danger" *ngIf="productForm.submitted && productname.invalid">Product Name is required.</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="productdetail">Product Detail</label>
+      <input type="text" id="productdetail" class="form-control" [(ngModel)]="product.productdetail" name="productdetail" required #productdetail="ngModel">
+      <div class="text-danger" *ngIf="productForm.submitted && productdetail.invalid">Product Detail is required.</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="noofproduct">Number of products</label>
+      <input type="number" id="noofproduct" class="form-control" [(ngModel)]="product.noofproduct" name="noofproduct" required #noofproduct="ngModel" min="1">
+      <div class="text-danger" *ngIf="productForm.submitted && noofproduct.invalid">Number of product is required is required.</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="productprice">Product price</label>
+      <input type="number" id="productprice" class="form-control" [(ngModel)]="product.productprice" name="productprice" required #productprice="ngModel" min="1">
+      <div class="text-danger" *ngIf="productForm.submitted && productprice.invalid">Number of product is required is required.</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="productimage">Product Image</label>
+      <input type="text" id="productimage" class="form-control" [(ngModel)]="product.productimage" name="productimage" #productimage="ngModel" >
+      
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" class="form-control" [(ngModel)]="product.category" name="category" (change)="onCategoryChange($event)">
+        <option *ngFor="let category of categories" [value]="category.categoryid">{{ category.categoryname }}</option>
+      </select>
+    </div>
+    <br>
+    <!-- <div class="text-danger" *ngIf="productForm.submitted && productForm.controls.image.invalid">Invalid image format. Please select a .jpg, .jpeg, or .png file.</div> -->
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Add Product</button>
+  </form>
+</div>

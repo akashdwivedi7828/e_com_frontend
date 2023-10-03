@@ -1,0 +1,19 @@
+<!--<p>TOP MENU ELEMENTS</p>-->
+
+<!-- MENU COMPONENT -->
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<div><a href="http://edubridgeindia.com" class="navbar-brand">Edubridge E-Commerce.com</a></div>
+<ul class="navbar-nav">
+    <!-- <li ><a *ngIf="hardcodedauthenticatedservice.isUserLoggedIn()" (click)="redirectToHomePage()"  class="nav-link" style="cursor: pointer;" >Login as Seller</a></li> -->
+<!--     
+    
+    <li *ngIf="hardcodedauthenticatedservice.isUserLoggedIn()"><a  routerLink="/listtodos" class="nav-link">Todos</a></li> -->
+</ul>
+
+<ul class="navbar-nav navbar-collapse justify-content-end">
+    <li *ngIf="!hardcodedauthenticatedservice.isUserLoggedIn() && hardcodedauthenticatedservice.isUserSignedIn()"><a  routerLink="/seller/login" class="nav-link" >Login</a></li>
+    <li><a *ngIf="!hardcodedauthenticatedservice.isUserLoggedOut()" (click)="redirectToHomePage()"  style="cursor: pointer;" class="nav-link">logout</a></li>
+</ul>
+</nav>
+</header>

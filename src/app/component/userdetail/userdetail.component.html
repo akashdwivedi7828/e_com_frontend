@@ -1,0 +1,17 @@
+<h1 class="text-center">userdetail works!</h1>
+<h3 *ngIf="num" class="text-center">User: {{num}}</h3>
+<table *ngIf="num" class="container-fluid text-center" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+        </tr>
+    </tbody>
+</table>

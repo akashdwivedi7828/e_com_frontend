@@ -1,0 +1,60 @@
+<div class="container custom-container shadow p-3 mb-5 bg-white rounded">
+  <h2>Sign Up</h2>
+  <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+    <div class="form-group">
+      <label for="sellermailid">Email:</label>
+      <input class="form-control"  type="text" name="sellermailid" [(ngModel)]="model.sellermailid" #sellermailid="ngModel" required minlength="12">
+      <div *ngIf="signupForm.controls['sellermailid']?.invalid && (signupForm.controls['sellermailid']?.dirty || signupForm.controls['sellermailid']?.touched)" class="text-danger">
+        <div *ngIf="signupForm?.controls?.['sellermailid']?.errors?.['required']" >Email is required.</div>
+        <div *ngIf="sellermailid.errors?.['sellermailid']">Invalid sellermailid format.</div>
+      </div>
+    </div>
+    <!-- Add more form fields here (e.g., name, sellerpassword) -->
+    <div class="form-group">
+      <label for="sellerpassword">Password:</label>
+      <input type="sellerpassword" class="form-control" id="sellerpassword" name="sellerpassword" [(ngModel)]="model.sellerpassword" #sellerpassword="ngModel" required minlength="8" >
+      <div *ngIf="signupForm?.controls?.['sellerpassword']?.invalid && (signupForm?.controls?.['sellerpassword']?.dirty || signupForm?.controls?.['sellerpassword']?.touched)" class="text-danger">
+        <div *ngIf="signupForm?.controls?.['sellerpassword']?.errors?.['required']">Password is required.</div>
+        <div *ngIf="signupForm?.controls?.['sellerpassword']?.errors?.['minlength']">Password must be at least 8 characters.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sellername">Name</label>
+      <input type="sellername" class="form-control" id="sellername" name="sellername" [(ngModel)]="model.sellername" #sellername="ngModel" required minlength="3" >
+      <div *ngIf="signupForm?.controls?.['sellername']?.invalid && (signupForm?.controls?.['sellername']?.dirty || signupForm?.controls?.['sellername']?.touched)" class="text-danger">
+        <div *ngIf="signupForm?.controls?.['sellername']?.errors?.['required']">Name is required.</div>
+        <div *ngIf="signupForm?.controls?.['sellername']?.errors?.['minlength']">Name must be at least 3 characters.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sellercompanyname">Company Name</label>
+      <input type="sellercompanyname" class="form-control" id="sellercompanyname" name="sellercompanyname" [(ngModel)]="model.sellercompanyname" required minlength="3" #sellercompanyname="ngModel">
+      <div *ngIf="signupForm?.controls?.['sellercompanyname']?.invalid && (signupForm?.controls?.['sellercompanyname']?.dirty || signupForm?.controls?.['sellercompanyname']?.touched)" class="text-danger">
+        <div *ngIf="signupForm?.controls?.['sellercompanyname']?.errors?.['required']">Company Name is required.</div>
+        <div *ngIf="signupForm?.controls?.['sellercompanyname']?.errors?.['minlength']">Company Name must be at least 3 characters.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sellerphonenumber">Phone Number</label>
+      <input type="sellerphonenumber" class="form-control" id="sellerphonenumber" name="sellerphonenumber" [(ngModel)]="model.sellerphonenumber" required minlength="10" #sellerphonenumber="ngModel">
+      <div *ngIf="signupForm?.controls?.['sellerphonenumber']?.invalid && (signupForm?.controls?.['sellerphonenumber']?.dirty || signupForm?.controls?.['sellerphonenumber']?.touched)" class="text-danger">
+        <div *ngIf="signupForm?.controls?.['sellerphonenumber']?.errors?.['required']">Phone Number is required.</div>
+        <div *ngIf="signupForm?.controls?.['sellerphonenumber']?.errors?.['minlength']">Phone Number must be at least 10 digits.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="selleraddress">Address</label>
+      <input type="selleraddress" class="form-control" id="selleraddress" name="selleraddress" [(ngModel)]="model.selleraddress" required minlength="8" #selleraddress="ngModel">
+      <div *ngIf="signupForm?.controls?.['selleraddress']?.invalid && (signupForm?.controls?.['selleraddress']?.dirty || signupForm?.controls?.['selleraddress']?.touched)" class="text-danger">
+        <div *ngIf="signupForm?.controls?.['selleraddress']?.errors?.['required']">Address is required.</div>
+        <div *ngIf="signupForm?.controls?.['selleraddress']?.errors?.['minlength']">Address must be at least 8 characters.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="signupForm.invalid">Sign Up</button>
+    <p>Already a member? <a routerLink="/seller/login/">Login now</a></p>
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<p>listtodos works!</p>
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Description</th>
+            <th scope="col">targetDate</th>
+          </tr>
+        </thead>
+        <tbody>
+            <!--for(int i:arr)-->
+            <!--todos is array name of typescript-->
+            <!--Myvartodo is user defined variable name-->
+            <tr *ngFor="let myvartodo of todos">
+                <td>{{myvartodo.id}}</td>
+                <td>{{myvartodo.description}}</td>
+                <td>{{myvartodo.targetDate | date:'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+        
+      </table>
+      
+</div>

@@ -1,0 +1,83 @@
+<div class="container custom-container shadow p-3 mb-5 bg-white rounded">
+    <h2>Log In</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="usermailid">Email:</label>
+        <input class="form-control"  type="text" name="usermailid" [(ngModel)]="model.usermailid" #usermailid="ngModel" required minlength="12">
+        <div *ngIf="loginForm.controls['usermailid']?.invalid && (loginForm.controls['usermailid']?.dirty || loginForm.controls['usermailid']?.touched)" class="text-danger">
+          <div *ngIf="loginForm?.controls?.['usermailid']?.errors?.['required']" >Email is required.</div>
+          <div *ngIf="usermailid.errors?.['usermailid']">Invalid user email id format.</div>
+        </div>
+      </div>
+      <!-- Add more form fields here (e.g., name, userpassword) -->
+      <div class="form-group">
+        <label for="userpassword">Password:</label>
+        <input type="userpassword" class="form-control" id="userpassword" name="userpassword" [(ngModel)]="model.userpassword" #userpassword="ngModel" required minlength="8" >
+        <div *ngIf="loginForm?.controls?.['userpassword']?.invalid && (loginForm?.controls?.['userpassword']?.dirty || loginForm?.controls?.['userpassword']?.touched)" class="text-danger">
+          <div *ngIf="loginForm?.controls?.['userpassword']?.errors?.['required']">Password is required.</div>
+          <div *ngIf="loginForm?.controls?.['userpassword']?.errors?.['minlength']">Password must be at least 8 characters.</div>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="loginForm.invalid">Sign Up</button>
+      <p>Don't have an account? <a routerLink="/user/signup/">Login</a></p>
+    </form>
+  </div>
+  
+  <!--<h2>{{result}}</h2>-->
+  <!--<h2>{{errorMessage}}</h2>-->
+  <!--<h1>{{errorMessage}}</h1>-->
+  <h1 *ngIf="result ; else notValid">
+      {{errorMessage}}
+  </h1>
+  <ng-template #notValid>
+      <h1>{{errorMessage}}</h1>
+  </ng-template>
+  
+  <!-- <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2 class="text-center">Sign Up</h2>
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                [(ngModel)]="user.username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="user.email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                [(ngModel)]="user.password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div> -->
+    
+  
+      
+  
